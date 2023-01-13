@@ -1,10 +1,11 @@
 public class ArrQueue {
-    int[] queue;
+    String[] queue;
     int head;
     int tail;
     int size;
 
     public ArrQueue(int size){ //constructor
+        queue = new String[size];
         head = -1;
         tail = -1;
         this.size = size;
@@ -14,32 +15,35 @@ public class ArrQueue {
         return size == 0;
     }
 
-    public boolean enqueue(int element){
-        if(tail != queue.length - 1){
+    public String enqueue(String element){
+        if(tail != queue.length - 1) {
             tail++;
             queue[tail] = element;
             size++;
-            return true;
+            return element;
         } else {
-            return false;
+            return null;
         }
+
     }
 
-    public int peek(){
-        int elementToPeek = 0;
+    public String peek(){
+        String elementToPeek = null;
         if(!isEmpty()){
-            elementToPeek = queue[head];
+            elementToPeek = queue[head + 1];
         }
         return elementToPeek;
     }
 
-    public int dequeue(){
-        int elementToDeque = 0;
-        if (!isEmpty()){
+    public String dequeue(){
+        String elementToDeque = null;
+        if (size != 0){
             head++;
             elementToDeque = queue[head];
             size--;
         }
         return elementToDeque;
     }
+
+
 }
